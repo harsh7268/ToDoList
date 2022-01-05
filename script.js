@@ -14,7 +14,7 @@ function toDoDetail() {
         str = '';
         for(let k of data){
             str +=`
-            <tr>
+            <tr class="main">
             <th scope="row">${k.id}</th>
             <td>${k.title}</td>
             <td>${k.completed}</td>
@@ -37,6 +37,21 @@ function toDoDetail() {
             `
         }
       tbody.innerHTML = str;  
+        
+        
+          let main = document.querySelectorAll('.main');
+      let inputBtn = document.getElementById('inputBtn');
+      inputBtn.addEventListener('input', () =>{
+            Array.from(main).forEach((element) =>{
+              if(element.children[1].innerHTML.toLowerCase().includes(inputBtn.value.toLowerCase())){
+                element.style.display="";
+              }
+              else{
+                element.style.display="none";
+              }
+            })
+      })
+        
       
     })
 }
